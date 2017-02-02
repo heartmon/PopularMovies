@@ -10,6 +10,11 @@ import com.heartmon.android.popularmovies.PopularMoviesApplication;
  * Created by heartmon on 1/29/2017.
  */
 
+/*
+Code obtained from
+https://github.com/frogermcs/GithubClient/blob/1bf53a2a36c8a85435e877847b987395e482ab4a/app/src/main/java/frogermcs/io/githubclient/ui/activity/BaseActivity.java
+*/
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override

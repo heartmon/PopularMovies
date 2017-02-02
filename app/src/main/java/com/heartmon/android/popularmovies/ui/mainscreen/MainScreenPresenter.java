@@ -29,10 +29,6 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
         this.movieRepository = movieRepository;
     }
 
-    public void clickMovie(Movie movie) {
-
-    }
-
     @Override
     public void fetchPopularMovies() {
         mainActivity.showLoading();
@@ -61,7 +57,6 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 @Override
                 public void onNext(MovieResult value) {
                     mainActivity.showPosts(value);
-                    Log.d(LOG_TAG, value.toString());
                 }
             });
     }
@@ -94,7 +89,6 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
             @Override
             public void onNext(MovieResult value) {
                 mainActivity.showPosts(value);
-                Log.d(LOG_TAG, value.toString());
             }
         });
     }

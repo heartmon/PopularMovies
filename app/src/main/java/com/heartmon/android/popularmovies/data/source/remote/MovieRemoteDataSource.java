@@ -27,14 +27,7 @@ public class MovieRemoteDataSource implements MovieDataSource {
 
     @Override
     public Observable<MovieResult> getPopularMovies() {
-
         return retrofit.create(MovieService.class).getPopularMovieList();
-//        .doOnNext(new Action1() {
-//            @Override
-//            public void call(List posts) {
-//                appLocalDataStore.savePostToDatabase(posts);
-//            }
-//        });
     }
 
     @Override

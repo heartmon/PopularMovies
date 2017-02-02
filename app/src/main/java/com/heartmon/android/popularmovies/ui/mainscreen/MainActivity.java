@@ -36,7 +36,6 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    //These references will be satisfied by 'SplashActivityComponent.inject(this)' method
     @Inject
     MainScreenPresenter presenter;
 
@@ -67,23 +66,18 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
         }
 
         mMovieList = new ArrayList<>();
-                //Create the array adapter and set it to list view
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
 
         mMovieRecyclerView.setLayoutManager(layoutManager);
 //        mMovieRecyclerView.setHasFixedSize();
         mMovieListAdapter = new MovieListAdapter(MainActivity.this, this);
         mMovieRecyclerView.setAdapter(mMovieListAdapter);
-
-//        Log.d(LOG_TAG, "On create");
         //call
         fetchMovies();
     }
 
     @Override
     public void onClick(Movie movie) {
-//        Toast.makeText(this, movie.getTitle(), Toast.LENGTH_SHORT).show();
-
         //get intent to the next activity
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("Movie", movie);
@@ -94,13 +88,7 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
     public void showPosts(MovieResult movieResult) {
         //Loop through the posts and get the title of the post and add it to our list object
         mMovieList = new ArrayList<Movie>(movieResult.getResults());
-
         mMovieListAdapter.setMovieList(mMovieList);
-
-//        Log.d("TEST", mMovieList.toString());
-
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-//        listView.setAdapter(adapter);
     }
 
     @Override
@@ -120,15 +108,11 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
     public void showComplete() {
         mProgressBar.setVisibility(View.INVISIBLE);
         mMovieRecyclerView.setVisibility(View.VISIBLE);
-        //Show completed message Toast
-//        Toast.makeText(getApplicationContext(), "Complete", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-//        return super.onCreateOptionsMenu(menu);
         return true;
     }
 

@@ -56,7 +56,9 @@ public class MovieRepositoryModule {
     @DataScope
     OkHttpClient provideOkhttpClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
-//        client.cache(cache);
+        /*
+        Code obtained from https://futurestud.io/tutorials/retrofit-2-how-to-add-query-parameters-to-every-request
+        */
         client.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
@@ -64,7 +66,7 @@ public class MovieRepositoryModule {
                 HttpUrl originalHttpUrl = original.url();
 
                 HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter("api_key", NetworkUtil.MOVIE_DB_API_KEY)
+                        .addQueryParameter(NetworkUtil.PARAM_MOVIE_DB_API_KEY, NetworkUtil.MOVIE_DB_API_KEY)
                         .build();
 
                 // Request customization: add request headers
@@ -75,12 +77,11 @@ public class MovieRepositoryModule {
                 return chain.proceed(request);
             }
         });
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        // set your desired log level
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        // add logging as last interceptor
-        client.addInterceptor(logging);  // <-- this is the important line!
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        client.addInterceptor(logging);
+
         return client.build();
     }
 

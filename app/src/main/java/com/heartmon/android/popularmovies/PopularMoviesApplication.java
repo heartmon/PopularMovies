@@ -4,13 +4,16 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-//import com.heartmon.android.popularmovies.data.DaggerMovieRepositoryComponent;
-//import com.heartmon.android.popularmovies.data.MovieRepositoryComponent;
-//import com.heartmon.android.popularmovies.data.MovieRepositoryModule;
 
 /**
  * Created by heartmon on 1/28/2017.
  */
+
+/*
+Use code from
+ https://github.com/frogermcs/GithubClient/blob/1bf53a2a36c8a85435e877847b987395e482ab4a/app/src/main/java/frogermcs/io/githubclient/GithubClientApplication.java
+as starter code
+*/
 
 public class PopularMoviesApplication extends Application {
 //    private MovieRepositoryComponent mMovieRepositoryComponent;
