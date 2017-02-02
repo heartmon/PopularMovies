@@ -13,6 +13,11 @@ import java.util.Date;
  * Created by heartmon on 1/22/2017.
  */
 
+/*
+Parcelable starter code obtained from
+https://www.sitepoint.com/transfer-data-between-activities-with-android-parcelable/
+*/
+
 public class Movie implements Parcelable {
     private String posterPath;
     private String overview;
