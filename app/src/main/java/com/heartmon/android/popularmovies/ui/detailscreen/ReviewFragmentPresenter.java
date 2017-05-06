@@ -29,14 +29,15 @@ public class ReviewFragmentPresenter extends BasePresenterImpl<ReviewFragment> i
     }
 
     public void fetchUserReviews(Integer movieId) {
+        mView.showLoading();
         if(isReviewLoading) {
             return;
         }
         if(movieReviewResult != null) {
             mView.showReview(movieReviewResult.getResults());
+            mView.showComplete();
             return;
         }
-        mView.showLoading();
         mRepository.getReviews(movieId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

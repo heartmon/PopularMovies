@@ -54,7 +54,11 @@ public class DetailPresenter extends BasePresenterImpl<DetailActivity> implement
     @Override
     public void fetchVideoTrailer(int videoId) {
 //        mView.getSupportLoaderManager().initLoader(DetailContract.LOADER_TRAILER_ID, null, mLoaderCallbacks);
-        if(isTrailerLoading || movieVideoResult != null) {
+        if(isTrailerLoading) {
+            return;
+        }
+        if(movieVideoResult != null) {
+            mView.showTrailerButton();
             return;
         }
         isTrailerLoading = true;
