@@ -1,6 +1,9 @@
 package com.heartmon.android.popularmovies.data;
 
+import android.app.Application;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Network;
+import android.util.Log;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -9,9 +12,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.heartmon.android.popularmovies.data.source.local.MovieLocalDataSource;
 import com.heartmon.android.popularmovies.util.DataScope;
 import com.heartmon.android.popularmovies.data.source.remote.MovieRemoteDataSource;
+import com.heartmon.android.popularmovies.util.Local;
 import com.heartmon.android.popularmovies.util.NetworkUtil;
+import com.heartmon.android.popularmovies.util.Remote;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import org.joda.time.DateTime;
@@ -19,6 +25,8 @@ import org.joda.time.format.ISODateTimeFormat;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -40,6 +48,14 @@ public class MovieRepositoryModule {
 
     @DataScope
     @Provides
+    @Local
+    MovieDataSource provideMovieLocalDataSource(Application application) {
+        return new MovieLocalDataSource(application.getApplicationContext());
+    }
+
+    @DataScope
+    @Provides
+    @Remote
     MovieDataSource provideMovieRemoteDataSource(Retrofit retrofit) {
         return new MovieRemoteDataSource(retrofit);
     }
@@ -96,6 +112,24 @@ public class MovieRepositoryModule {
                 .build();
         return retrofit;
     }
+
+//    @Provides @Singleton
+//    SqlBrite provideSqlBrite() {
+//        return new SqlBrite.Builder()
+//                .logger(new SqlBrite.Logger() {
+//                    @Override public void log(String message) {
+//                        Log.d("Database",message);
+//                    }
+//                })
+//                .build();
+//    }
+//
+//    @Provides @Singleton
+//    BriteDatabase provideDatabase(SqlBrite sqlBrite, SQLiteOpenHelper helper) {
+//        BriteDatabase db = sqlBrite.wrapDatabaseHelper(helper, Schedulers.io());
+//        db.setLoggingEnabled(true);
+//        return db;
+//    }
 
 
 }

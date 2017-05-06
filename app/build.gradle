@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 25
@@ -18,6 +18,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 dependencies {
@@ -25,14 +28,14 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    apt 'com.google.dagger:dagger-compiler:2.2'
-    compile 'com.google.dagger:dagger:2.2'
+    compile "com.google.dagger:dagger:2.9"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.9"
     provided 'javax.annotation:jsr250-api:1.0'
     compile 'com.android.support:recyclerview-v7:25.0.1'
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
-    compile 'com.jakewharton:butterknife:8.0.0'
-    apt 'com.jakewharton:butterknife-compiler:8.0.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -45,4 +48,12 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okio:okio:1.7.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+    compile 'com.pushtorefresh.storio:sqlite:1.12.3'
+    compile 'com.pushtorefresh.storio:content-resolver:1.12.3'
+    compile "com.pushtorefresh.storio:sqlite-annotations:1.12.3"
+    compile "com.pushtorefresh.storio:content-resolver-annotations:1.12.3"
+    annotationProcessor 'com.pushtorefresh.storio:sqlite-annotations-processor:1.12.3'
+    annotationProcessor 'com.pushtorefresh.storio:content-resolver-annotations-processor:1.12.3'
+//    compile 'com.squareup.sqlbrite:sqlbrite:1.1.1'
+    compile "com.github.akarnokd:rxjava2-interop:0.10.0"
 }

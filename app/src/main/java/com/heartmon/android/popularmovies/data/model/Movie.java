@@ -4,6 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Property;
 
+import com.heartmon.android.popularmovies.data.source.local.MovieContract;
+import com.heartmon.android.popularmovies.data.source.local.MovieContract.FavoriteEntry;
+import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverColumn;
+import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverType;
+import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
+import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
+
 import org.joda.time.DateTime;
 
 import java.util.Calendar;
@@ -18,14 +25,33 @@ Parcelable starter code obtained from
 https://www.sitepoint.com/transfer-data-between-activities-with-android-parcelable/
 */
 
+@StorIOSQLiteType(table = FavoriteEntry.TABLE_NAME)
+@StorIOContentResolverType(uri = FavoriteEntry.CONTENT_URI_STRING)
 public class Movie implements Parcelable {
-    private String posterPath;
-    private String overview;
-    private Integer id;
-    private String title;
-    private Float voteAverage;
-    private String backdropPath;
-    private Date releaseDate;
+    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_POSTER_PATH)
+    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_POSTER_PATH)
+    public String posterPath;
+    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_OVERVIEW)
+    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_OVERVIEW)
+    public String overview;
+    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_ID, key = true)
+    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_ID, key = true)
+    public Integer id;
+    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_TITLE)
+    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_TITLE)
+    public String title;
+    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_RATING)
+    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_RATING)
+    public Float voteAverage;
+    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_BACKDROP_PATH)
+    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_BACKDROP_PATH)
+    public String backdropPath;
+//    @StorIOSQLiteColumn(name = FavoriteEntry.COLUMN_NAME_YEAR)
+//    @StorIOContentResolverColumn(name = FavoriteEntry.COLUMN_NAME_YEAR)
+    public Date releaseDate;
+
+    public Movie() {
+    }
 
     public Movie(String posterPath, String overview, Integer id, String title, Float voteAverage, String backdropPath, Date releaseDate) {
         this.posterPath = posterPath;
@@ -63,6 +89,34 @@ public class Movie implements Parcelable {
 
     public Date getReleaseDate() {
         return releaseDate;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setVoteAverage(Float voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     @Override

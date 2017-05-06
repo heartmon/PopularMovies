@@ -1,5 +1,6 @@
 package com.heartmon.android.popularmovies.ui.detailscreen;
 
+import com.heartmon.android.popularmovies.data.model.MovieVideoResult;
 import com.heartmon.android.popularmovies.ui.base.BasePresenter;
 import com.heartmon.android.popularmovies.ui.base.BaseView;
 
@@ -8,11 +9,14 @@ import com.heartmon.android.popularmovies.ui.base.BaseView;
  */
 
 public class DetailContract {
-    interface View extends BaseView<DetailActivity> {
+    public static final int LOADER_TRAILER_ID = 1000;
 
+    interface View extends BaseView<DetailActivity> {
+        void showTrailerButton();
     }
 
-    interface Presenter extends BasePresenter {
-
+    interface Presenter extends BasePresenter<DetailActivity> {
+        void fetchVideoTrailer(int videoId);
+        MovieVideoResult getTrailer();
     }
 }

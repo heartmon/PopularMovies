@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import org.joda.time.LocalDateTime;
+
 
 /**
  * Created by heartmon on 1/28/2017.
@@ -22,6 +24,11 @@ public class PopularMoviesApplication extends Application {
 
     public static PopularMoviesApplication get(Context context) {
         return (PopularMoviesApplication) context.getApplicationContext();
+    }
+
+    static {
+        // Build the local caches inside Joda Time immediately instead of lazily
+        new LocalDateTime();
     }
 
     @Override

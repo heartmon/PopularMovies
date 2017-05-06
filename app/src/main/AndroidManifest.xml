@@ -3,6 +3,7 @@
     package="com.heartmon.android.popularmovies">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".PopularMoviesApplication"
@@ -23,6 +24,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.mainscreen.MainActivity" />
         </activity>
+        <provider
+            android:name=".data.source.local.MovieContentProvider"
+            android:authorities="com.heartmon.android.popularmovies"
+            android:exported="false" />
     </application>
 
 </manifest>

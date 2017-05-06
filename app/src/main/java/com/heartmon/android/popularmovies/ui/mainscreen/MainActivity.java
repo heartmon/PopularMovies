@@ -21,6 +21,7 @@ import com.heartmon.android.popularmovies.data.model.MovieResult;
 import com.heartmon.android.popularmovies.ui.detailscreen.DetailActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -85,10 +86,19 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
     }
 
     @Override
-    public void showPosts(MovieResult movieResult) {
+    protected void onResume() {
+        super.onResume();
+
+        if(mCurrentSelected == R.id.action_sort_favorite) {
+            fetchMovies();
+        }
+    }
+
+    @Override
+    public void showPosts(List<Movie> movies) {
         //Loop through the posts and get the title of the post and add it to our list object
-        mMovieList = new ArrayList<Movie>(movieResult.getResults());
-        mMovieListAdapter.setMovieList(mMovieList);
+//        mMovieList = new ArrayList<Movie>(movieResult.getResults());
+        mMovieListAdapter.setMovieList(movies);
     }
 
     @Override
@@ -126,6 +136,9 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
             case R.id.action_sort_top_rated:
                 presenter.fetchTopRatedMovies();
                 return true;
+            case R.id.action_sort_favorite:
+                presenter.fetchFavoriteMovies();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -138,9 +151,13 @@ public class MainActivity extends BaseActivity implements MainScreenContract.Vie
     }
 
     private void fetchMovies() {
+        Log.d(LOG_TAG, mCurrentSelected+"");
         switch (mCurrentSelected) {
             case R.id.action_sort_top_rated:
                 presenter.fetchTopRatedMovies();
+                break;
+            case R.id.action_sort_favorite:
+                presenter.fetchFavoriteMovies();
                 break;
             default:
                 presenter.fetchPopularMovies();
