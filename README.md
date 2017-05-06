@@ -28,15 +28,20 @@ https://adityaladwa.wordpress.com/2016/10/25/offline-first-reactive-android-apps
 
 http://stackoverflow.com/questions/40095010/dagger-2-components-chain-dependencies
 
-Persist presenter
+Persist presenter + using loader with presenter
+
 https://medium.com/@czyrux/presenter-surviving-orientation-changes-with-loaders-6da6d86ffbbf
+
 https://github.com/benoitletondor/Android-Studio-MVP-template
+
 https://medium.com/google-developers/making-loading-data-on-android-lifecycle-aware-897e12760832
 
 ContentResolver+RxJava
+
 https://github.com/pushtorefresh/storio
 
 Code structure + storio example of using content resolver
+
 https://adityaladwa.wordpress.com/2016/10/25/offline-first-reactive-android-apps-repository-pattern-mvp-dagger-2-rxjava-contentprovider/
 
 
