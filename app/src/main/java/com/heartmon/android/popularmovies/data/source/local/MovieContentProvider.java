@@ -18,6 +18,8 @@ import static com.heartmon.android.popularmovies.data.source.local.MovieContract
  * Created by heartmon on 5/5/2017.
  */
 
+
+
 public class MovieContentProvider extends ContentProvider {
     public static final int MOVIES = 100;
     public static final int MOVIE_WITH_ID = 101;

@@ -18,6 +18,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by heartmon on 4/25/2017.
  */
 
+/*
+Code obtained from
+https://github.com/benoitletondor/Android-Studio-MVP-template
+*/
+
 public abstract class BaseFragment<P extends BasePresenter<V>, V> extends Fragment implements LoaderManager.LoaderCallbacks<P>
 {
     /**

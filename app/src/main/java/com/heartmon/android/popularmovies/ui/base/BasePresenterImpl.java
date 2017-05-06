@@ -7,6 +7,11 @@ import android.support.annotation.Nullable;
  * Created by heartmon on 4/25/2017.
  */
 
+/*
+Code obtained from
+https://github.com/benoitletondor/Android-Studio-MVP-template
+*/
+
 public abstract class BasePresenterImpl<V> implements BasePresenter<V>
 {
     @Nullable

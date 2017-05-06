@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /*
 Code obtained from
-https://github.com/frogermcs/GithubClient/blob/1bf53a2a36c8a85435e877847b987395e482ab4a/app/src/main/java/frogermcs/io/githubclient/ui/activity/BaseActivity.java
+https://github.com/benoitletondor/Android-Studio-MVP-template
 */
 
 public abstract class BaseLoaderActivity<P extends BasePresenter<V>, V> extends AppCompatActivity implements LoaderManager.LoaderCallbacks<P>

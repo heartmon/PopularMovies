@@ -5,6 +5,11 @@ import android.support.v4.content.Loader;
 
 import com.heartmon.android.popularmovies.ui.base.BasePresenter;
 
+/*
+Code obtained from
+https://github.com/benoitletondor/Android-Studio-MVP-template
+https://medium.com/@czyrux/presenter-surviving-orientation-changes-with-loaders-6da6d86ffbbf
+*/
 public class PresenterLoader<T extends BasePresenter> extends Loader<T> {
 
     private final PresenterFactory<T> factory;

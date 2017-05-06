@@ -2,9 +2,10 @@ package com.heartmon.android.popularmovies.ui.base;
 
 import android.view.View;
 
-/**
- * Created by heartmon on 1/28/2017.
- */
+/*
+Code obtained from
+https://github.com/benoitletondor/Android-Studio-MVP-template
+*/
 
 public interface BasePresenter<V> {
     void onViewAttached(V view);
